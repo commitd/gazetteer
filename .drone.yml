@@ -1,0 +1,45 @@
+---
+kind: pipeline
+type: docker
+name: gazetteer
+
+steps:
+
+  - name: build
+    image: committed/ci:1.6.0
+    commands:
+      - mvn clean package
+
+  - name: deploy
+    image: committed/ci:1.6.0
+    commands:
+      - mvn deploy
+    when:
+      ref:
+        - refs/tags/v*
+      
+  - name: slack
+    image: plugins/slack
+    settings:
+      channel: group-ci
+      webhook:
+        from_secret: slack_webhook
+      template:
+        from_secret: slack_template
+    when:
+      status:
+        - failure
+
+  - name: announce
+    image: plugins/slack
+    settings:
+      channel: group-dev
+      webhook:
+        from_secret: slack_webhook
+      template: >
+        :tada: New version ${DRONE_TAG} of `committed/gazetteer` available
+    when:
+      ref:
+        - refs/tags/v*
+      status:
+        - success

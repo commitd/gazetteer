@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders dark without error 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary WithStyles(ForwardRef(AppBar))-root WithStyles(ForwardRef(AppBar))-root Styled(WithStyles(ForwardRef(AppBar)))-root Styled(WithStyles(ForwardRef(AppBar)))-root MuiPaper-elevation0"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-regular Component-root Component-root MuiToolbar-gutters"
+        >
+          <div
+            class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+          >
+            <a
+              aria-current="page"
+              class="Link-root"
+              href="/"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text WithNoOpener-root WithNoOpener-root"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                    />
+                  </svg>
+                  <h1
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+                  >
+                     Gazetteer
+                  </h1>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </a>
+          </div>
+          <button
+            aria-label="switch-theme"
+            class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-colorPrimary"
+            tabindex="0"
+            title="Use dark theme"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root makeStyles-color makeStyles-color"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54s-2.94 8.27-7 9.54c.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Header renders without error 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary WithStyles(ForwardRef(AppBar))-root WithStyles(ForwardRef(AppBar))-root Styled(WithStyles(ForwardRef(AppBar)))-root Styled(WithStyles(ForwardRef(AppBar)))-root MuiPaper-elevation0"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-regular Component-root Component-root MuiToolbar-gutters"
+        >
+          <div
+            class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+          >
+            <a
+              aria-current="page"
+              class="Link-root"
+              href="/"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text WithNoOpener-root WithNoOpener-root"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                    />
+                  </svg>
+                  <h1
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+                  >
+                     Gazetteer
+                  </h1>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </a>
+          </div>
+          <button
+            aria-label="switch-theme"
+            class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-colorPrimary"
+            tabindex="0"
+            title="Use dark theme"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root makeStyles-color makeStyles-color"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54s-2.94 8.27-7 9.54c.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MainAction renders without error 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained WithNoOpener-root WithNoOpener-root MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Action
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;

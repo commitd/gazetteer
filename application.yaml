@@ -1,0 +1,12 @@
+logging:
+  level:
+    io:
+      committed: DEBUG
+    
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:gazatteerdb;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1

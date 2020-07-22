@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders dark without error 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+    >
+      Results
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+    >
+      <div
+        class="makeStyles-legend-top"
+      >
+        <span
+          class="WrappedTypography-root WrappedTypography-root"
+        >
+          <div
+            class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+          >
+            <div
+              class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+            >
+              <span
+                class="makeStyles-root makeStyles-root"
+                style="background: rgba(255, 255, 204, 0.7); padding-left: 8px; padding-right: 8px; border-radius: undefined undefined undefined undefined;"
+              >
+                TEST
+              </span>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div
+        class="MuiPaper-root MuiCard-root WithStyles(ForwardRef(Card))-root WithStyles(ForwardRef(Card))-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div>
+          <span
+            class="WrappedTypography-root WrappedTypography-root makeStyles-text"
+          >
+            <span
+              class="makeStyles-root makeStyles-root"
+            >
+              <span>
+                this is a 
+              </span>
+              <span
+                class="makeStyles-root makeStyles-root"
+                style="background: rgba(255, 255, 204, 0.7); padding-left: 8px; padding-right: 8px; border-radius: undefined undefined undefined undefined;"
+              >
+                test
+                <span
+                  class="makeStyles-type"
+                >
+                  TEST
+                </span>
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders without error 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+    >
+      Results
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+    >
+      <div
+        class="makeStyles-legend-top"
+      >
+        <span
+          class="WrappedTypography-root WrappedTypography-root"
+        >
+          <div
+            class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+          >
+            <div
+              class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+            >
+              <span
+                class="makeStyles-root makeStyles-root"
+                style="background: rgba(255, 255, 204, 0.7); padding-left: 8px; padding-right: 8px; border-radius: undefined undefined undefined undefined;"
+              >
+                TEST
+              </span>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div
+        class="MuiPaper-root MuiCard-root WithStyles(ForwardRef(Card))-root WithStyles(ForwardRef(Card))-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div>
+          <span
+            class="WrappedTypography-root WrappedTypography-root makeStyles-text"
+          >
+            <span
+              class="makeStyles-root makeStyles-root"
+            >
+              <span>
+                this is a 
+              </span>
+              <span
+                class="makeStyles-root makeStyles-root"
+                style="background: rgba(255, 255, 204, 0.7); padding-left: 8px; padding-right: 8px; border-radius: undefined undefined undefined undefined;"
+              >
+                test
+                <span
+                  class="makeStyles-type"
+                >
+                  TEST
+                </span>
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
