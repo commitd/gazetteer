@@ -2,7 +2,7 @@
 
 [![Committed Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcommitted.software%2Fbadge)](https://committed.io)
 [![Build Status](https://drone.committed.software/api/badges/commitd/components/status.svg)](https://drone.committed.software/commitd/gazetteer)
-[Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)
+![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)
 
 Committed's Gazetteer offers a simple API for performing text markup using a Gazetteer.
 The Gazetteer is often overlooked in favour of ML base NLP solutions but for high value targets a simple gazetteer can form an important part or a broader NLP extraction strategy. 
@@ -13,7 +13,7 @@ This service also has a user interface for configuring the Gazetteer so it can b
 Use the pre-build docker container:
 
 ```shell
-docker run -p8080:8080 committed/gazetteer
+docker run -p 8080:8080 committed/gazetteer
 ```
 
 You can configure the gazetteer using the UI on http://localhost:8080 and checkout the API at http://localhost:8080/swagger-ui/index.html
@@ -44,7 +44,7 @@ We use Storybook to develop and document the components, this is run in developm
 yarn storybook
 ```
 
-## CI
+## 🤖 CI
 
 Pull requests go through CI checks using Drone. 
 Use version tags on master to deploy to Maven central and Docker hub.
