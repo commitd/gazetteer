@@ -3,17 +3,29 @@ kind: pipeline
 type: docker
 name: gazetteer
 
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
+
 steps:
 
   - name: build
     image: committed/ci:1.6.0
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
     commands:
-      - mvn clean package
+      - mvn -B clean package
+    
 
   - name: deploy
     image: committed/ci:1.6.0
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
     commands:
-      - mvn deploy
+      - mvn -B deploy
     when:
       ref:
         - refs/tags/v*
