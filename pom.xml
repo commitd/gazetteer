@@ -12,28 +12,26 @@
   <version>1.0.0</version>
   <name>Gazetteer</name>
   <description>Simple text markup API based on gazeteers with management UI</description>
-  
   <url>http://github.com/commitd/gazetteer</url>
-  
   <scm>
     <url>http://github.com/commitd/gazetteer</url>
   </scm>
-  
   <licenses>
     <license>
       <name>MIT</name>
       <url>http://www.opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
-  
+  <organization>
+    <name>Committed</name>
+    <url>http://committed.io</url>
+  </organization>
   <developers>
     <developer>
       <email>opensource@committed.io</email>
       <organization>Committed</organization>
-      <organizationUrl>https://committed.io</organizationUrl>
     </developer>
   </developers>
-  
   <properties>
     <java.version>14</java.version>
     <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
@@ -231,16 +229,45 @@
         <artifactId>dockerfile-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>default</id>
+            <id>build-and-tag-latest</id>
+            <phase>none</phase>
             <goals>
               <goal>build</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>tag-version</id>
+            <phase>none</phase>
+            <goals>
+              <goal>tag</goal>
+            </goals>
+            <configuration>
+              <tag>${project.version}</tag>
+            </configuration>
+          </execution>
+          <execution>
+            <id>push-latest</id>
+            <phase>none</phase>
+            <goals>
               <goal>push</goal>
             </goals>
+            <configuration>
+              <tag>latest</tag>
+            </configuration>
+          </execution>
+          <execution>
+            <id>push-version</id>
+            <phase>none</phase>
+            <goals>
+              <goal>push</goal>
+            </goals>
+            <configuration>
+              <tag>${project.version}</tag>
+            </configuration>
           </execution>
         </executions>
         <configuration>
-          <repository>committed/gazetteer</repository>
-          <tag>${project.version}</tag>
+          <repository>registry.hub.docker.com/committed/gazetteer</repository>
           <buildArgs>
             <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
           </buildArgs>
@@ -248,17 +275,15 @@
       </plugin>
     </plugins>
   </build>
-  
-    <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-  
   <profiles>
     <profile>
       <id>release</id>
+      <distributionManagement>
+        <snapshotRepository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
       <build>
         <plugins>
           <plugin>
@@ -314,5 +339,4 @@
       </build>
     </profile>
   </profiles>
-  
 </project>

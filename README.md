@@ -47,7 +47,11 @@ yarn storybook
 ## 🤖 CI
 
 Pull requests go through CI checks using Drone. 
-Use version tags on master to deploy to Maven central and Docker hub.
+Use version tags on master to deploy to Docker hub, release to maven central is currently manual, using:
+
+```shel
+mvn deploy -P release
+```
 
 ## ©️ License
 

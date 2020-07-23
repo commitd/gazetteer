@@ -19,13 +19,21 @@ steps:
       - mvn -B clean package
     
 
-  - name: deploy
+  - name: dockerhub
     image: committed/ci:1.6.0
+    environment:
+      DOCKERHUB_USERNAME:
+        from_secret: dockerhub_username
+      DOCKERHUB_PASSWORD:
+        from_secret: dockerhub_password
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - mvn -B deploy
+      - mvn -B dockerfile:build
+      - mvn -B dockerfile:tag@tag-version
+      - mvn -B dockerfile:push@push-latest -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
+      - mvn -B dockerfile:push@push-version -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
     when:
       ref:
         - refs/tags/v*
