@@ -30,10 +30,8 @@ steps:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - mvn -B dockerfile:build
-      - mvn -B dockerfile:tag@tag-version
-      - mvn -B dockerfile:push@push-latest -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
-      - mvn -B dockerfile:push@push-version -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
+      - mvn -B package dockerfile:build dockerfile:tag@tag-version  -P docker -DskipTests
+      - mvn -B dockerfile:push@push-latest dockerfile:push@push-version -P docker -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
     when:
       ref:
         - refs/tags/v*
