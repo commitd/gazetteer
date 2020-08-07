@@ -18,20 +18,17 @@ import io.committed.gazetteer.model.Keyword;
 @SpringBootTest
 class GazetteerControllerTest {
 
-  private static final String OTHER = "OTHER";
+  private static final String OTHER = "Other";
 
   private static final String TEST = "TEST";
 
   private static final String TEXT = "This is test1, test2, test3 and test4";
 
-  @Autowired
-  private GazetteerRepository repository;
+  @Autowired private GazetteerRepository repository;
 
-  @SpyBean
-  private GazetteerService service;
+  @SpyBean private GazetteerService service;
 
-  @Autowired
-  private GazetteerController controller;
+  @Autowired private GazetteerController controller;
 
   @BeforeEach
   void setup() {
@@ -51,7 +48,6 @@ class GazetteerControllerTest {
     assertTrue(types.contains(TEST));
     assertTrue(types.contains(OTHER));
   }
-
 
   @Test
   void canGetForType() {
@@ -81,7 +77,6 @@ class GazetteerControllerTest {
     assertEquals(8, mention.getOffset());
     assertEquals(5, mention.getLength());
   }
-
 
   @Test
   void canAddToType() {
@@ -119,7 +114,6 @@ class GazetteerControllerTest {
     assertEquals(2, find.size());
   }
 
-
   @Test
   void canDeleteType() {
     controller.delete(TEST, Arrays.asList("test0", "test1", "test2"));
@@ -128,7 +122,6 @@ class GazetteerControllerTest {
 
     List<Match> find = controller.find(TEXT);
     assertEquals(2, find.size());
-
   }
 
   @Test

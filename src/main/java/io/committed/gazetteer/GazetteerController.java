@@ -57,7 +57,9 @@ public class GazetteerController {
   @Operation(description = "Get all the keywords for the given type")
   @ApiResponse(responseCode = "200", description = "Successful")
   public Map<String, Integer> getByType(@PathVariable String type) {
-    return repository.findByType(type.toUpperCase(), Sort.by("value").ascending()).stream()
+    return repository
+        .findByType(type, Sort.by("value").ascending())
+        .stream()
         .collect(toMap(Keyword::getValue, Keyword::getCount));
   }
 
@@ -65,9 +67,13 @@ public class GazetteerController {
   @Operation(description = "Add the given keywords associated with the given type")
   @ApiResponse(responseCode = "200", description = "Successful")
   public void add(@PathVariable String type, @RequestBody List<String> values) {
-    repository.saveAll(values.stream().map(v -> new KeywordId(type, v))
-        .filter(id -> !repository.existsById(id.toString())).map(id -> new Keyword(id, 0))
-        .collect(Collectors.toList()));
+    repository.saveAll(
+        values
+            .stream()
+            .map(v -> new KeywordId(type, v))
+            .filter(id -> !repository.existsById(id.toString()))
+            .map(id -> new Keyword(id, 0))
+            .collect(Collectors.toList()));
     updateGazetteer();
   }
 
@@ -77,7 +83,7 @@ public class GazetteerController {
   @Operation(description = "Delete all keywords for the given type")
   @ApiResponse(responseCode = "200", description = "Successful")
   public void deleteByType(@PathVariable String type) {
-    repository.deleteByType(type.toUpperCase());
+    repository.deleteByType(type);
     updateGazetteer();
   }
 
@@ -98,10 +104,15 @@ public class GazetteerController {
   }
 
   public void updateGazetteer() {
-    Map<String, Set<String>> gazetteers = Streams.stream(repository.findAll()).collect(Collectors
-        .groupingBy(Keyword::getType, Collectors.mapping(Keyword::getValue, Collectors.toSet())));
+    Map<String, Set<String>> gazetteers =
+        Streams.stream(repository.findAll())
+            .collect(
+                Collectors.groupingBy(
+                    Keyword::getType, Collectors.mapping(Keyword::getValue, Collectors.toSet())));
     service.updateGazetteers(ImmutableMap.copyOf(gazetteers));
-    log.info("Gazetteers updated types:{}, values:{}", gazetteers.size(),
+    log.info(
+        "Gazetteers updated types:{}, values:{}",
+        gazetteers.size(),
         gazetteers.values().stream().flatMap(Collection::stream).count());
   }
 }

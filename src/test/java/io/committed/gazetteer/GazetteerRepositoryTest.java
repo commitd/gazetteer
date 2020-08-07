@@ -15,10 +15,9 @@ import io.committed.gazetteer.model.Keyword;
 class GazetteerRepositoryTest {
 
   private static final String TEST = "TEST";
-  private static final String OTHER = "OTHER";
+  private static final String OTHER = "other type";
 
-  @Autowired
-  private GazetteerRepository repository;
+  @Autowired private GazetteerRepository repository;
 
   @AfterEach
   void cleanUp() {
@@ -32,7 +31,6 @@ class GazetteerRepositoryTest {
     repository.save(new Keyword(OTHER, "test1"));
     repository.save(new Keyword(OTHER, "test2"));
   }
-
 
   @Test
   void canAddAndRemoveEntities() {
@@ -65,5 +63,4 @@ class GazetteerRepositoryTest {
     assertTrue(types.contains(TEST));
     assertTrue(types.contains(OTHER));
   }
-
 }

@@ -13,12 +13,10 @@ public interface GazetteerRepository extends CrudRepository<Keyword, String> {
 
   void deleteByType(String type);
 
-  void deleteByTypeAndValue(String upperCase, String v);
+  void deleteByTypeAndValue(String type, String v);
 
   @Query("select distinct type from Keyword")
   List<String> getTypes();
 
   Streamable<Keyword> findByType(String type, Sort sort);
-
-
 }

@@ -10,7 +10,7 @@ public class KeywordId {
   String value;
 
   public KeywordId(String type, String value) {
-    this.type = type.toUpperCase();
+    this.type = type;
     this.value = value;
   }
 
@@ -18,5 +18,4 @@ public class KeywordId {
   public String toString() {
     return String.format("%s:%s", type, value);
   }
-
 }
