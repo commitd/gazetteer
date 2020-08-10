@@ -5,18 +5,17 @@ import lombok.Value;
 @Value
 public class KeywordId {
 
-  String type;
+  String typeId;
 
   String value;
 
-  public KeywordId(String type, String value) {
-    this.type = type.toUpperCase();
+  public KeywordId(String typeId, String value) {
+    this.typeId = typeId;
     this.value = value;
   }
 
   @Override
   public String toString() {
-    return String.format("%s:%s", type, value);
+    return String.format("%s:%s", typeId, value);
   }
-
 }

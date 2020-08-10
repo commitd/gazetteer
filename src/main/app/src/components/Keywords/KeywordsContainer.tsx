@@ -2,32 +2,33 @@ import React from 'react'
 import useSWR from 'swr'
 import { Await } from '../Await'
 import { Keywords } from '.'
+import { Type } from '../../types/server-types'
 
 interface KeywordData {
   [keyword: string]: number
 }
 
-const fetcher = async (url: string): Promise<KeywordData> =>
-  fetch(url).then((r) => (r.json() as unknown) as KeywordData)
-
 export interface KeywordsContainerProps {
-  type: string
+  typeId: string
   navigate: undefined | ((path: string) => void)
 }
 
 export const KeywordsContainer: React.FC<KeywordsContainerProps> = ({
-  type,
+  typeId,
 }: KeywordsContainerProps) => {
-  const { data: keywords, error, mutate } = useSWR<KeywordData, Error>(
-    `/api/v1/keywords/${type}`,
-    fetcher
+  const { data: type, error: typeError } = useSWR<Type, Error>(
+    `/api/v1/types/${typeId}`
   )
+  const { data: keywords, error: keywordError, mutate } = useSWR<
+    KeywordData,
+    Error
+  >(`/api/v1/types/${typeId}/keywords`)
 
   const handleDelete = async (toDelete: string[]): Promise<void> => {
     if (keywords === undefined) {
       return
     }
-    await fetch(`/api/v1/keywords/${type}`, {
+    await fetch(`/api/v1/types/${typeId}/keywords`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -41,12 +42,15 @@ export const KeywordsContainer: React.FC<KeywordsContainerProps> = ({
     await mutate(newValue, true)
   }
 
-  const handleAdd = async (type: string, toAdd: string): Promise<void> => {
+  const handleAdd = async (toAdd: string): Promise<void> => {
     if (keywords === undefined) {
       return
     }
-    const parsed = toAdd.split('\n').map((keyword) => keyword.trim())
-    await fetch(`/api/v1/keywords/${type}`, {
+    const parsed = toAdd
+      .split('\n')
+      .map((keyword) => keyword.trim())
+      .filter((keyword) => keyword.length > 0)
+    await fetch(`/api/v1/types/${typeId}/keywords`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +65,10 @@ export const KeywordsContainer: React.FC<KeywordsContainerProps> = ({
   }
 
   return (
-    <Await condition={keywords !== undefined} error={error}>
+    <Await
+      condition={type !== undefined && keywords !== undefined}
+      error={typeError ?? keywordError}
+    >
       <Keywords
         type={type}
         keywords={keywords ?? {}}

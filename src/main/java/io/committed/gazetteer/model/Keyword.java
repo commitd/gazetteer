@@ -10,26 +10,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Keyword {
 
-  @Id
-  String id;
+  @Id String id;
 
-  String type;
+  String typeId;
 
   String value;
-  
+
   int count;
-  
-  public Keyword(String type, String value) {
-    this(new KeywordId(type, value), 0);
+
+  public Keyword(String typeId, String value) {
+    this(new KeywordId(typeId, value), 0);
   }
-  
+
   public Keyword(KeywordId id, int count) {
     this.id = id.toString();
-    this.type = id.getType();
+    this.typeId = id.getTypeId();
     this.value = id.getValue();
     this.count = 0;
   }
-  
+
   public int found() {
     return this.count++;
   }

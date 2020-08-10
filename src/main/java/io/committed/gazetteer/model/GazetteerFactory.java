@@ -4,5 +4,5 @@ import java.util.Collection;
 import java.util.Map;
 
 public interface GazetteerFactory {
-  Gazetteer create(Map<String, Collection<String>> values);
+  Gazetteer create(Map<Type, Collection<String>> values);
 }

@@ -1,12 +1,11 @@
 package io.committed.gazetteer.impl;
 
+import com.google.common.collect.ImmutableList;
+import io.committed.gazetteer.model.Gazetteer;
+import io.committed.gazetteer.model.KeywordMention;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.google.common.collect.ImmutableList;
-import io.committed.gazetteer.model.KeywordMention;
-import io.committed.gazetteer.model.Gazetteer;
 
 public class DelegatingGazetteer implements Gazetteer {
 

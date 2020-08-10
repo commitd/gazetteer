@@ -7,7 +7,7 @@ exports[`renders dark without error 1`] = `
       class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
     >
       <svg
-        class="LogoSvg-root LogoSvg-root"
+        class="LogoSvg-root LogoSvg-root Styled(LogoSvg)-root Styled(LogoSvg)-root"
         height="1em"
         viewBox="0 0 512 512"
         width="1em"
@@ -61,7 +61,7 @@ exports[`renders without error 1`] = `
       class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
     >
       <svg
-        class="LogoSvg-root LogoSvg-root"
+        class="LogoSvg-root LogoSvg-root Styled(LogoSvg)-root Styled(LogoSvg)-root"
         height="1em"
         viewBox="0 0 512 512"
         width="1em"

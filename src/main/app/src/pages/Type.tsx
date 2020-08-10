@@ -1,25 +1,20 @@
 import { RouteComponentProps } from '@reach/router'
 import React from 'react'
-import { Page } from '../components/Page'
-import { Typography, Heading } from '@committed/components'
 import { KeywordsContainer } from '../components/Keywords/KeywordsContainer'
+import { Page } from '../components/Page'
 
 export interface TypeProps extends RouteComponentProps {
-  type?: string
+  typeId?: string
 }
 
-export const Type: React.FC<TypeProps> = ({ type, navigate }) => {
-  if (type === undefined) {
+export const Type: React.FC<TypeProps> = ({ typeId, navigate }) => {
+  if (typeId === undefined) {
     return null
   }
 
   return (
     <Page data-testid="Type">
-      <Heading.h1>{type}</Heading.h1>
-      <Typography>
-        The list of keywords for this type and the find count is shown below.
-      </Typography>
-      <KeywordsContainer type={type} navigate={navigate} />
+      <KeywordsContainer typeId={typeId} navigate={navigate} />
     </Page>
   )
 }

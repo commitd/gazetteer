@@ -1,6 +1,6 @@
 {
   "name": "gazetteer",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "description": "A simple gazetteer service with UI for configuration.",
   "author": "Committed <contact@commmitted.io> (http://committed.io)",
   "license": "MIT",

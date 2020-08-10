@@ -1,12 +1,12 @@
 import React from 'react'
-import { AddType } from '.'
+import { AddKeywords } from '.'
 import { useToggle } from '../../hooks/useToggle'
 import { Button } from '@committed/components'
 import { action } from '@storybook/addon-actions'
 
 export default {
-  title: 'Components|AddType',
-  component: AddType,
+  title: 'Components|AddKeywords',
+  component: AddKeywords,
 }
 
 export const Default: React.FC = () => {
@@ -14,7 +14,12 @@ export const Default: React.FC = () => {
   return (
     <>
       <Button onClick={toggle}>Show Dialog</Button>
-      <AddType open={show} onClose={toggle} onAdd={action('add')} />
+      <AddKeywords
+        open={show}
+        type={'Test'}
+        close={toggle}
+        onAdd={action('add')}
+      />
     </>
   )
 }

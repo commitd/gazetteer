@@ -7,5 +7,5 @@ export default {
 }
 
 export const Default: React.FC = () => {
-  return  <ErrorLogo />
+  return <ErrorLogo />
 }

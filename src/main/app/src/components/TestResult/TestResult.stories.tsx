@@ -16,6 +16,7 @@ export const Default: React.FC = () => {
           value: 'test',
           type: 'TEST',
           offset: 10,
+          typeId: '1234',
         },
       ]}
     />

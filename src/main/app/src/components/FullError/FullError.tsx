@@ -1,12 +1,6 @@
 import React from 'react'
-import {
-  Box,
-  Button,
-  Column,
-  Display,
-  Monospace,
-  Logo,
-} from '@committed/components'
+import { ErrorLogo } from '../ErrorLogo/ErrorLogo'
+import { Box, Button, Column, Display, Monospace } from '@committed/components'
 
 export interface FullErrorProps {
   /**
@@ -33,7 +27,7 @@ export const FullError: React.FC<FullErrorProps> = ({
   action = (): void => window.location.reload(),
 }) => (
   <Column height="100%" alignItems="center">
-    <Logo />
+    <ErrorLogo />
     <Display.d1>Error</Display.d1>
     {error !== undefined && (
       <Box color="error.main">

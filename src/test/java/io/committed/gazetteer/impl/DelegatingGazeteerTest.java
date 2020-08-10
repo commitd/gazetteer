@@ -5,12 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import com.google.common.collect.ImmutableList;
+import io.committed.gazetteer.model.Gazetteer;
+import io.committed.gazetteer.model.KeywordMention;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import com.google.common.collect.ImmutableList;
-import io.committed.gazetteer.model.KeywordMention;
-import io.committed.gazetteer.model.Gazetteer;
 
 class DelegatingGazeteerTest {
 
