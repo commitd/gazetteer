@@ -17,7 +17,7 @@ exports[`renders dark without error 1`] = `
         <p
           class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
         >
-          The gazetteer finds the type below by matching the keywords declared for each type.
+          The gazetteer finds the types below by matching the keywords declared for each type.
         </p>
       </div>
       <button
@@ -56,7 +56,25 @@ exports[`renders dark without error 1`] = `
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
               >
-                TEST
+                <div
+                  class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+                >
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    test
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Ignore case,
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Whole words
+                  </p>
+                </div>
               </span>
             </div>
             <span
@@ -67,7 +85,31 @@ exports[`renders dark without error 1`] = `
             class="MuiListItemSecondaryAction-root"
           >
             <button
-              aria-label="comments"
+              aria-label="edit"
+              class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="delete"
               class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
               tabindex="0"
               type="button"
@@ -107,7 +149,25 @@ exports[`renders dark without error 1`] = `
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
               >
-                OTHER
+                <div
+                  class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+                >
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    other
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Respect case,
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Partial words
+                  </p>
+                </div>
               </span>
             </div>
             <span
@@ -118,7 +178,31 @@ exports[`renders dark without error 1`] = `
             class="MuiListItemSecondaryAction-root"
           >
             <button
-              aria-label="comments"
+              aria-label="edit"
+              class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="delete"
               class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
               tabindex="0"
               type="button"
@@ -166,7 +250,7 @@ exports[`renders without error 1`] = `
         <p
           class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
         >
-          The gazetteer finds the type below by matching the keywords declared for each type.
+          The gazetteer finds the types below by matching the keywords declared for each type.
         </p>
       </div>
       <button
@@ -205,7 +289,25 @@ exports[`renders without error 1`] = `
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
               >
-                TEST
+                <div
+                  class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+                >
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    test
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Ignore case,
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Whole words
+                  </p>
+                </div>
               </span>
             </div>
             <span
@@ -216,7 +318,31 @@ exports[`renders without error 1`] = `
             class="MuiListItemSecondaryAction-root"
           >
             <button
-              aria-label="comments"
+              aria-label="edit"
+              class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="delete"
               class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
               tabindex="0"
               type="button"
@@ -256,7 +382,25 @@ exports[`renders without error 1`] = `
               <span
                 class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
               >
-                OTHER
+                <div
+                  class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+                >
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    other
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Respect case,
+                  </p>
+                  <p
+                    class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+                  >
+                    Partial words
+                  </p>
+                </div>
               </span>
             </div>
             <span
@@ -267,7 +411,31 @@ exports[`renders without error 1`] = `
             class="MuiListItemSecondaryAction-root"
           >
             <button
-              aria-label="comments"
+              aria-label="edit"
+              class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM21.41 6.34l-3.75-3.75-2.53 2.54 3.75 3.75 2.53-2.54z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-label="delete"
               class="MuiButtonBase-root MuiIconButton-root WithNoOpener-root WithNoOpener-root MuiIconButton-edgeEnd"
               tabindex="0"
               type="button"
@@ -293,6 +461,72 @@ exports[`renders without error 1`] = `
           </div>
         </li>
       </ul>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders without types 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+    >
+      <div
+        class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      >
+        <h1
+          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+        >
+          Types
+        </h1>
+        <p
+          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+        >
+          The gazetteer finds the types below by matching the keywords declared for each type.
+        </p>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained WithNoOpener-root WithNoOpener-root"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Type
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      class="MuiPaper-root MuiCard-root WithStyles(ForwardRef(Card))-root WithStyles(ForwardRef(Card))-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
+      >
+        <h2
+          class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h2"
+        >
+          No types
+        </h2>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained WithNoOpener-root WithNoOpener-root MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </DocumentFragment>

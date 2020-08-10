@@ -6,6 +6,6 @@ export const Routes: React.FC = () => (
   <Router>
     <NotFound default />
     <Home path="/" />
-    <Type path="types/:type" />
+    <Type path="types/:typeId" />
   </Router>
 )

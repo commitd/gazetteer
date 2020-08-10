@@ -3,6 +3,14 @@
 exports[`renders dark without error 1`] = `
 <DocumentFragment>
   <div>
+    <h1
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+    />
+    <p
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+    >
+      The list of keywords for this type and the find count is shown below.
+    </p>
     <div
       class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
     >
@@ -252,6 +260,14 @@ exports[`renders dark without error 1`] = `
 exports[`renders without error 1`] = `
 <DocumentFragment>
   <div>
+    <h1
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root Component-root Component-root MuiTypography-h1"
+    />
+    <p
+      class="MuiTypography-root WithStyles(ForwardRef(Typography))-root WithStyles(ForwardRef(Typography))-root WrappedTypography-root WrappedTypography-root MuiTypography-body1"
+    >
+      The list of keywords for this type and the find count is shown below.
+    </p>
     <div
       class="MuiBox-root MuiBox-root Styled(MuiBox)-root Styled(MuiBox)-root"
     >

@@ -3,74 +3,112 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
+  DialogContent,
   TextField,
+  FormControlLabel,
+  Switch,
 } from '@committed/components'
 import React, { useState } from 'react'
+import { Type, TypeConfig } from '../../types/server-types'
 
 export interface AddTypeProps {
-  fixedType?: string | undefined
+  type?: Type | undefined
   open: boolean
-  close: () => void
-  onAdd: (type: string, keywords: string) => void
+  onClose: () => void
+  onAdd: (config: TypeConfig) => void
 }
 
 /**
  * AddType component
  */
 export const AddType: React.FC<AddTypeProps> = ({
-  fixedType,
+  type,
   open,
-  close,
+  onClose,
   onAdd,
 }: AddTypeProps) => {
-  const [type, setType] = useState<string>(fixedType ?? '')
-  const [keywords, setKeywords] = useState('')
+  const [value, setValue] = useState<string>(type?.value ?? '')
+  const [ignoreCase, setIgnoreCase] = useState<boolean>(
+    type === undefined ? false : type.ignoreCase
+  )
+  const [onlyWholeWords, setOnlyWholeWords] = useState<boolean>(
+    type === undefined ? true : type.onlyWholeWords
+  )
 
-  const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setType(e.target.value)
+  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setValue(e.target.value)
   }
 
-  const handleKeywordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+  const handleIgnoreCaseChange = (
+    _e: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setKeywords(e.target.value)
+    setIgnoreCase(!ignoreCase)
+  }
+
+  const handleOnlyWholeWords = (
+    _e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setOnlyWholeWords(!onlyWholeWords)
   }
 
   const handleSubmit = (): void => {
-    onAdd(type, keywords)
-    setType('')
-    setKeywords('')
-    close()
+    onAdd(Object.assign({ value, ignoreCase, onlyWholeWords }))
+    onClose()
+  }
+
+  const handleClose = (): void => {
+    setValue(type?.value ?? '')
+    setIgnoreCase(type === undefined ? false : type.ignoreCase)
+    setOnlyWholeWords(type === undefined ? true : type.onlyWholeWords)
+    onClose()
   }
 
   return (
-    <Dialog open={open} onClose={close}>
-      <DialogTitle>Add type</DialogTitle>
-      {fixedType === undefined && (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>
+        {type === undefined ? 'Add type' : `Update type '${type.value}'`}
+      </DialogTitle>
+      <DialogContent>
         <TextField
-          value={type}
-          onChange={handleTypeChange}
-          m={2}
+          value={value}
+          onChange={handleValueChange}
+          my={2}
+          minWidth={1 / 2}
           label="Type"
           fullWidth
+          helperText={'The type assigned to matches'}
         />
-      )}
-      <TextField
-        value={keywords}
-        m={2}
-        label="Keywords"
-        onChange={handleKeywordChange}
-        rows={10}
-        helperText="Input keywords one line at a time. Keywords can also be multi word phrases."
-        multiline
-        fullWidth
-      />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={!ignoreCase}
+              onChange={handleIgnoreCaseChange}
+              color="primary"
+            />
+          }
+          label="Case sensitive"
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={onlyWholeWords}
+              onChange={handleOnlyWholeWords}
+              color="primary"
+            />
+          }
+          label="Only match whole words"
+        />
+      </DialogContent>
       <DialogActions>
-        <Button variant="text" onClick={close}>
+        <Button variant="text" onClick={handleClose}>
           Cancel
         </Button>
-        <Button color="primary" onClick={handleSubmit}>
-          Add
+        <Button
+          color="primary"
+          disabled={value.length === 0}
+          onClick={handleSubmit}
+        >
+          {type === undefined ? 'Add' : 'Update'}
         </Button>
       </DialogActions>
     </Dialog>

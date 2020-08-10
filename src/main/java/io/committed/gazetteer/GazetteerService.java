@@ -1,6 +1,14 @@
 package io.committed.gazetteer;
 
 import static java.util.stream.Collectors.toList;
+
+import io.committed.gazetteer.model.Gazetteer;
+import io.committed.gazetteer.model.GazetteerFactory;
+import io.committed.gazetteer.model.Keyword;
+import io.committed.gazetteer.model.KeywordId;
+import io.committed.gazetteer.model.KeywordMention;
+import io.committed.gazetteer.model.Type;
+import io.committed.gazetteer.repositories.KeywordRepository;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -8,28 +16,22 @@ import java.util.Map;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import io.committed.gazetteer.model.Gazetteer;
-import io.committed.gazetteer.model.GazetteerFactory;
-import io.committed.gazetteer.model.Keyword;
-import io.committed.gazetteer.model.KeywordId;
-import io.committed.gazetteer.model.KeywordMention;
 
 @Service
 public class GazetteerService {
 
-  private final GazetteerRepository repository;
+  private final KeywordRepository repository;
 
   private final GazetteerFactory factory;
 
   private Gazetteer gazetteer;
 
-
-  public GazetteerService(GazetteerRepository repository, GazetteerFactory factory) {
+  public GazetteerService(KeywordRepository repository, GazetteerFactory factory) {
     this.repository = repository;
     this.factory = factory;
   }
 
-  protected synchronized void updateGazetteers(Map<String, Collection<String>> gazetteers) {
+  protected synchronized void updateGazetteers(Map<Type, Collection<String>> gazetteers) {
     gazetteer = factory.create(gazetteers);
   }
 
@@ -49,5 +51,4 @@ public class GazetteerService {
 
     return found;
   }
-
 }

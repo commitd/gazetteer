@@ -2,6 +2,7 @@ import {
   Button,
   Card,
   Checkbox,
+  Heading,
   Icons,
   List,
   ListItem,
@@ -9,11 +10,13 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   Row,
+  Typography,
 } from '@committed/components'
 import React from 'react'
 import { useImmer } from 'use-immer'
 import { useDialog } from '../../hooks/useDialog'
-import { AddType } from '../AddType'
+import { Type } from '../../types/server-types'
+import { AddKeywords } from '../AddKeywords/AddKeywords'
 
 export interface KeywordProps {
   keyword: string
@@ -29,7 +32,7 @@ export const Keyword: React.FC<KeywordProps> = ({
   add,
   remove,
 }: KeywordProps) => {
-  const handleSelect = () => {
+  const handleSelect = (): void => {
     if (selected) {
       remove(keyword)
     } else {
@@ -60,10 +63,10 @@ export const Keyword: React.FC<KeywordProps> = ({
 }
 
 export interface KeywordsProps {
-  type: string
+  type?: Type
   keywords: { [keyword: string]: number }
   onDelete: (keywords: string[]) => void
-  onAdd: (type: string, keywords: string) => void
+  onAdd: (keywords: string) => void
 }
 
 /**
@@ -93,6 +96,7 @@ export const Keywords: React.FC<KeywordsProps> = ({
 
   function handleDelete(): void {
     onDelete(selected)
+    handleSelectNone()
   }
 
   function handleSelectAll(): void {
@@ -108,6 +112,10 @@ export const Keywords: React.FC<KeywordsProps> = ({
   }
   return (
     <>
+      <Heading.h1>{type?.value ?? ''}</Heading.h1>
+      <Typography>
+        The list of keywords for this type and the find count is shown below.
+      </Typography>
       <Row my={2}>
         <Button color="primary" mr={2} onClick={open}>
           <Icons.Add />
@@ -115,7 +123,7 @@ export const Keywords: React.FC<KeywordsProps> = ({
         </Button>
         <Button
           mr={2}
-          disabled={selected.length === keywords.length}
+          disabled={selected.length === Object.keys(keywords).length}
           onClick={handleSelectAll}
         >
           <Icons.CheckBox />
@@ -138,21 +146,28 @@ export const Keywords: React.FC<KeywordsProps> = ({
           Delete
         </Button>
       </Row>
-      <Card>
-        <List>
-          {Object.keys(keywords).map((keyword) => (
-            <Keyword
-              key={keyword}
-              keyword={keyword}
-              selected={selected.includes(keyword)}
-              add={addKeyword}
-              count={keywords[`${keyword}`]}
-              remove={removeKeyword}
-            />
-          ))}
-        </List>
-      </Card>
-      <AddType open={show} fixedType={type} close={close} onAdd={onAdd} />
+      {Object.keys(keywords).length > 0 && (
+        <Card>
+          <List>
+            {Object.keys(keywords).map((keyword) => (
+              <Keyword
+                key={keyword}
+                keyword={keyword}
+                selected={selected.includes(keyword)}
+                add={addKeyword}
+                count={keywords[`${keyword}`]}
+                remove={removeKeyword}
+              />
+            ))}
+          </List>
+        </Card>
+      )}
+      <AddKeywords
+        open={show}
+        type={type?.value ?? 'Unknown'}
+        close={close}
+        onAdd={onAdd}
+      />
     </>
   )
 }

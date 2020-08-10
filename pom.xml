@@ -9,7 +9,7 @@
   </parent>
   <groupId>io.committed</groupId>
   <artifactId>gazetteer</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <name>Gazetteer</name>
   <description>Simple text markup API based on gazetteers with management UI</description>
   <url>http://github.com/commitd/gazetteer</url>
@@ -209,6 +209,27 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>io.committed</groupId>
+        <artifactId>speedy-spotless-maven-plugin</artifactId>
+        <version>0.1.1</version>
+        <executions>
+          <execution>
+            <id>install-formatter-hook</id>
+            <goals>
+              <goal>install-hooks</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <java>
+            <googleJavaFormat>
+              <style>GOOGLE</style>
+            </googleJavaFormat>
+            <removeUnusedImports />
+          </java>
+        </configuration>
       </plugin>
     </plugins>
   </build>

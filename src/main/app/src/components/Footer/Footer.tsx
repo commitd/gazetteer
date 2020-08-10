@@ -137,7 +137,7 @@ export const Footer: React.FC = () => (
               </FooterLink>
             </Typography>
           </FooterColumn>
-          <FooterColumn justifyContent={{ sm: 'center', md: 'flex-end' }}>
+          <FooterColumn justifyContent={{ sm: 'flex-start', md: 'center' }}>
             <Flex alignItems="center">
               <Typography>Developed by</Typography>
               <Box display="inline-block" px={1}>

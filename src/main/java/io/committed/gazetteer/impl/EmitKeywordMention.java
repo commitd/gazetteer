@@ -1,16 +1,18 @@
 package io.committed.gazetteer.impl;
 
-import org.ahocorasick.trie.Emit;
 import io.committed.gazetteer.model.KeywordId;
 import io.committed.gazetteer.model.KeywordMention;
+import org.ahocorasick.trie.Emit;
 
 public class EmitKeywordMention implements KeywordMention {
 
   private final Emit emit;
+  private final String typeId;
   private final String type;
 
-  public EmitKeywordMention(Emit emit, String type) {
+  public EmitKeywordMention(Emit emit, String typeId, String type) {
     this.emit = emit;
+    this.typeId = typeId;
     this.type = type;
   }
 
@@ -26,14 +28,22 @@ public class EmitKeywordMention implements KeywordMention {
 
   @Override
   public KeywordId getKeywordId() {
-    return new KeywordId(type, emit.getKeyword());
+    return new KeywordId(typeId, emit.getKeyword());
+  }
+
+  @Override
+  public String getType() {
+    return type;
   }
 
   @Override
   public String toString() {
-    return "EmitKeywordMention [type=" + type + ", getOffset()=" + getOffset() + ", getLength()="
-        + getLength() + "]";
+    return "EmitKeywordMention [type="
+        + type
+        + ", getOffset()="
+        + getOffset()
+        + ", getLength()="
+        + getLength()
+        + "]";
   }
-
-
 }
