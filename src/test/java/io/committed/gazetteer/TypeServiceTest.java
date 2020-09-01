@@ -26,7 +26,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.data.domain.Sort;
 
 @SpringBootTest
-class GazetteerControllerTest {
+class TypeServiceTest {
 
   private static final String OTHER = "Other";
 
@@ -37,9 +37,9 @@ class GazetteerControllerTest {
   @Autowired private TypeRepository typeRepository;
   @Autowired private KeywordRepository keywordRepository;
 
-  @SpyBean private GazetteerService service;
+  @SpyBean private GazetteerService gazetteerService;
 
-  @Autowired private GazetteerController controller;
+  @Autowired private TypeService typeService;
 
   private String testId;
 
@@ -56,21 +56,21 @@ class GazetteerControllerTest {
     keywordRepository.save(new Keyword(testId, "test2"));
     keywordRepository.save(new Keyword(otherId, "test2"));
     keywordRepository.save(new Keyword(otherId, "test3"));
-    controller.updateGazetteer();
-    reset(service);
+    typeService.updateGazetteer();
+    reset(gazetteerService);
   }
 
   @Test
   void canGetTypes() {
     List<String> types =
-        Streams.stream(controller.getTypes()).map(Type::getValue).collect(toList());
+        Streams.stream(typeService.getTypes()).map(Type::getValue).collect(toList());
     assertTrue(types.contains(TEST));
     assertTrue(types.contains(OTHER));
   }
 
   @Test
   void canGetType() throws Exception {
-    Type type = controller.getType(testId);
+    Type type = typeService.getType(testId);
     assertEquals(TEST, type.getValue());
   }
 
@@ -79,14 +79,14 @@ class GazetteerControllerTest {
     assertThrows(
         NotFoundException.class,
         () -> {
-          controller.getType("missing");
+          typeService.getType("missing");
         });
   }
 
   @Test
   void canCreateType() {
     String type = "new";
-    String id = controller.createType(TypeConfig.builder().value(type).build());
+    String id = typeService.createType(TypeConfig.builder().value(type).build());
     assertEquals(type, typeRepository.findById(id).orElseThrow().getValue());
   }
 
@@ -94,7 +94,7 @@ class GazetteerControllerTest {
   void canUpdateType() throws Exception {
     TypeConfig config =
         TypeConfig.builder().value(OTHER).ignoreCase(true).ignoreOverlaps(true).build();
-    controller.updateType(testId, config);
+    typeService.updateType(testId, config);
     assertEquals(OTHER, typeRepository.findById(testId).orElseThrow().getValue());
     assertEquals(
         config.getIgnoreCase(), typeRepository.findById(testId).orElseThrow().isIgnoreCase());
@@ -102,7 +102,7 @@ class GazetteerControllerTest {
 
   @Test
   void canGetForType() {
-    Map<String, Integer> byType = controller.getKeywords(testId);
+    Map<String, Integer> byType = typeService.getKeywords(testId);
     assertEquals(3, byType.size());
     assertTrue(byType.containsKey("test0"));
     assertTrue(byType.containsKey("test1"));
@@ -114,13 +114,13 @@ class GazetteerControllerTest {
 
   @Test
   void canFindKeywords() {
-    List<Match> find = controller.find(TEXT);
+    List<Match> find = typeService.find(TEXT);
     assertEquals(4, find.size());
   }
 
   @Test
   void spanCorrectForKeywords() {
-    List<Match> find = controller.find("This is test0!");
+    List<Match> find = typeService.find("This is test0!");
     assertEquals(1, find.size());
     Match mention = find.get(0);
     assertEquals(testId, mention.getTypeId());
@@ -131,15 +131,15 @@ class GazetteerControllerTest {
 
   @Test
   void canAddToType() {
-    controller.addKeywords(testId, Arrays.asList("test3", "test4"));
+    typeService.addKeywords(testId, Arrays.asList("test3", "test4"));
 
     assertTrue(keywordRepository.existsById(String.format("%s:test3", testId)));
     assertTrue(keywordRepository.existsById(String.format("%s:test4", testId)));
 
-    List<Match> find = controller.find(TEXT);
+    List<Match> find = typeService.find(TEXT);
     assertEquals(6, find.size());
 
-    Map<String, Integer> byType = controller.getKeywords(testId);
+    Map<String, Integer> byType = typeService.getKeywords(testId);
     assertEquals(0, byType.get("test0"));
     assertEquals(1, byType.get("test1"));
     assertEquals(1, byType.get("test2"));
@@ -147,44 +147,44 @@ class GazetteerControllerTest {
 
   @Test
   void canDeleteType() {
-    controller.deleteType(testId);
+    typeService.deleteType(testId);
 
     assertTrue(keywordRepository.findByTypeId(testId, Sort.unsorted()).isEmpty());
     assertTrue(typeRepository.findById(testId).isEmpty());
 
-    List<Match> find = controller.find(TEXT);
+    List<Match> find = typeService.find(TEXT);
     assertEquals(2, find.size());
   }
 
   @Test
   void canDeleteKeywords() {
-    controller.deleteKeywords(testId, Arrays.asList("test1", "test2"));
+    typeService.deleteKeywords(testId, Arrays.asList("test1", "test2"));
 
     assertFalse(keywordRepository.findByTypeId(testId, Sort.unsorted()).isEmpty());
     assertTrue(typeRepository.findById(testId).isPresent());
 
-    List<Match> find = controller.find(TEXT);
+    List<Match> find = typeService.find(TEXT);
     assertEquals(2, find.size());
   }
 
   @Test
   void canDeleteAllType() {
-    controller.deleteKeywords(testId, Arrays.asList("test0", "test1", "test2"));
+    typeService.deleteKeywords(testId, Arrays.asList("test0", "test1", "test2"));
 
     assertTrue(keywordRepository.findByTypeId(testId, Sort.unsorted()).isEmpty());
     // Does not delete the type
     assertTrue(typeRepository.findById(testId).isPresent());
 
-    List<Match> find = controller.find(TEXT);
+    List<Match> find = typeService.find(TEXT);
     assertEquals(2, find.size());
   }
 
   @Test
   void readdingDoesNotResetCount() {
-    controller.find(TEXT);
-    assertEquals(1, controller.getKeywords(testId).get("test1"));
-    controller.addKeywords(testId, Arrays.asList("test1"));
-    controller.find(TEXT);
-    assertEquals(2, controller.getKeywords(testId).get("test1"));
+    typeService.find(TEXT);
+    assertEquals(1, typeService.getKeywords(testId).get("test1"));
+    typeService.addKeywords(testId, Arrays.asList("test1"));
+    typeService.find(TEXT);
+    assertEquals(2, typeService.getKeywords(testId).get("test1"));
   }
 }

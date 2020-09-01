@@ -9,7 +9,7 @@
   </parent>
   <groupId>io.committed</groupId>
   <artifactId>gazetteer</artifactId>
-  <version>1.2.0</version>
+  <version>1.3.0</version>
   <name>Gazetteer</name>
   <description>Simple text markup API based on gazetteers with management UI</description>
   <url>http://github.com/commitd/gazetteer</url>
