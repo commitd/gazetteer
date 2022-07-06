@@ -1,5 +1,6 @@
 package io.committed.gazetteer.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class Keyword {
 
   String typeId;
 
+  @Column(name = "`VALUE`")
   String value;
 
   int count;

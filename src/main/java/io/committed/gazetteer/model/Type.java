@@ -1,6 +1,7 @@
 package io.committed.gazetteer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +24,7 @@ public class Type {
   String id;
 
   /** The string value of the type */
+  @Column(name = "`VALUE`")
   String value;
 
   /** Configure the Trie to ignore overlapping keywords. */
