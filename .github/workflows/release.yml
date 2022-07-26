@@ -28,9 +28,10 @@ jobs:
           SIGN_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           SIGN_KEY_PASS: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
+      - name: Docker build
+        run: mvn -B package dockerfile:build dockerfile:tag@tag-version  -P docker -DskipTests
       - name: Publish to dockerhub
-      - run: mvn -B package dockerfile:build dockerfile:tag@tag-version  -P docker -DskipTests
-      - run: mvn -B dockerfile:push@push-latest dockerfile:push@push-version -P docker -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
+        run: mvn -B dockerfile:push@push-latest dockerfile:push@push-version -P docker -Ddockerfile.username=$DOCKERHUB_USERNAME -Ddockerfile.password=$DOCKERHUB_PASSWORD
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}

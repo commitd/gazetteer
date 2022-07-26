@@ -39,7 +39,7 @@
     <frontend-src-dir>${project.basedir}/src/main/app</frontend-src-dir>
     <guava.version>31.1-jre</guava.version>
     <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-    <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <nexus-staging-maven-plugin.version>1.6.9</nexus-staging-maven-plugin.version>
     <node.version>v16.16.0</node.version>
     <typescript-generator-maven-plugin.version>2.24.612</typescript-generator-maven-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
