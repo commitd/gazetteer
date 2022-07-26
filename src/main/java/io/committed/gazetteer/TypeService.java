@@ -91,7 +91,7 @@ public class TypeService {
             .map(v -> new KeywordId(typeId, v))
             .filter(id -> !keywordRepository.existsById(id.toString()))
             .map(id -> new Keyword(id, 0))
-            .collect(Collectors.toList()));
+            .toList());
     updateGazetteer();
   }
 
@@ -102,7 +102,7 @@ public class TypeService {
   }
 
   public List<Match> find(String text) {
-    return service.findInText(text).stream().map(Match::new).collect(toList());
+    return service.findInText(text).stream().map(Match::new).toList();
   }
 
   public void updateGazetteer() {
