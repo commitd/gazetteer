@@ -78,9 +78,7 @@ public class TypeService {
   }
 
   public Map<String, Integer> getKeywords(String typeId) {
-    return keywordRepository
-        .findByTypeId(typeId, Sort.by("value").ascending())
-        .stream()
+    return keywordRepository.findByTypeId(typeId, Sort.by("value").ascending()).stream()
         .collect(toMap(Keyword::getValue, Keyword::getCount));
   }
 
@@ -89,12 +87,11 @@ public class TypeService {
       throw new NotFoundException(String.format("Type id %s not found", typeId));
     }
     keywordRepository.saveAll(
-        values
-            .stream()
+        values.stream()
             .map(v -> new KeywordId(typeId, v))
             .filter(id -> !keywordRepository.existsById(id.toString()))
             .map(id -> new Keyword(id, 0))
-            .collect(Collectors.toList()));
+            .toList());
     updateGazetteer();
   }
 
@@ -105,7 +102,7 @@ public class TypeService {
   }
 
   public List<Match> find(String text) {
-    return service.findInText(text).stream().map(Match::new).collect(toList());
+    return service.findInText(text).stream().map(Match::new).toList();
   }
 
   public void updateGazetteer() {
@@ -115,9 +112,7 @@ public class TypeService {
                 Collectors.toMap(
                     Function.identity(),
                     type ->
-                        keywordRepository
-                            .findByTypeId(type.getId(), Sort.unsorted())
-                            .stream()
+                        keywordRepository.findByTypeId(type.getId(), Sort.unsorted()).stream()
                             .map(Keyword::getValue)
                             .collect(toSet())));
     service.updateGazetteers(gazetteers);

@@ -2,39 +2,8 @@ spring:
   config:
     use-legacy-processing: true
 ---
-
-
 server:
   port: 8085
-
-spring:
-  # By default make the Baleen profile active
-  profiles:
-    active:
-    - baleen
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: ledger-response
-          group: suggestion
-        output:
-          destination: suggestion-response
-          group: suggestion
-
-# Defined the arga Baleen suggestion, note the | which starts a YAML block quote (YAML in YAML)
-arga:
-  baleen:
-    poolSize: 1
-    # Under suggestion put the Yaml verbatim from Baleen
-    # Recommend using the NoOp ordered and history to improve performance
-    #TODO add plain content extractor when PR merged
-    pipeline: |
-      history:
-        class: uk.gov.dstl.baleen.core.history.noop.NoopBaleenHistory
-      orderer: uk.gov.dstl.baleen.core.pipelines.orderers.NoOpOrderer
-      annotators:
-      - regex.Email
 
 logging:
   level:

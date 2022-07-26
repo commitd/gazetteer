@@ -2,11 +2,12 @@ package io.committed.gazetteer;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+
+import com.google.common.collect.ImmutableList;
+import io.committed.gazetteer.dto.TypeConfig;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.google.common.collect.ImmutableList;
-import io.committed.gazetteer.dto.TypeConfig;
 
 class GazetterControllerTest {
 
