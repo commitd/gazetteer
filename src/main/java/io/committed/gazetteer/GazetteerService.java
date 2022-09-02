@@ -39,15 +39,16 @@ public class GazetteerService {
   public List<KeywordMention> findInText(String text) {
     List<KeywordMention> found = gazetteer.find(text);
 
-    Map<KeywordId, Optional<Keyword>> record = new HashMap<>();
+    Map<KeywordId, Optional<Keyword>> recordMap = new HashMap<>();
 
     for (KeywordMention mention : found) {
       Optional<Keyword> keyword =
-          record.computeIfAbsent(mention.getKeywordId(), id -> repository.findById(id.toString()));
+          recordMap.computeIfAbsent(
+              mention.getKeywordId(), id -> repository.findById(id.toString()));
       keyword.ifPresent(Keyword::found);
     }
 
-    repository.saveAll(record.values().stream().flatMap(Optional::stream).collect(toList()));
+    repository.saveAll(recordMap.values().stream().flatMap(Optional::stream).collect(toList()));
 
     return found;
   }
