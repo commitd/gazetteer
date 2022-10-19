@@ -5,11 +5,11 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.2</version>
+    <version>2.7.4</version>
   </parent>
   <groupId>io.committed</groupId>
   <artifactId>gazetteer</artifactId>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <name>Gazetteer</name>
   <description>Simple text markup API based on gazetteers with management UI</description>
   <url>http://github.com/commitd/gazetteer</url>
